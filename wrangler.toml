@@ -6,8 +6,9 @@ compatibility_flags = ["nodejs_compat"]
 [assets]
 directory = "./public"
 binding = "ASSETS"
-# Let the Worker handle WS routes first; everything else goes to static assets.
-run_worker_first = ["/ws/*", "/dm/*"]
+# Worker runs first for every request and either handles it (WS upgrades)
+# or delegates to env.ASSETS.fetch(req) for static files.
+run_worker_first = true
 
 [[durable_objects.bindings]]
 name = "ROOM"
