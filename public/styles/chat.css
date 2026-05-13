@@ -1,0 +1,281 @@
+/* ============================================================ */
+/* Chat desktop layout                                           */
+/* ============================================================ */
+.aol-desktop {
+  position: relative;
+  min-height: calc(100vh - 36px);
+  padding: 16px;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 720px) {
+  .aol-desktop { grid-template-columns: 1fr; padding: 8px; gap: 8px; }
+  .buddy { width: auto !important; }
+  .room-finder, .mailbox { left: 50% !important; right: auto !important; transform: translateX(-50%) !important; width: calc(100vw - 16px) !important; }
+}
+
+/* Buddy list */
+.buddy { width: 220px; min-height: 320px; }
+.buddy-body { padding: 4px; }
+.buddy-group {
+  font-weight: bold;
+  font-size: 11px;
+  background: #d4d0c8;
+  padding: 2px 4px;
+}
+.buddy-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 260px;
+  overflow-y: auto;
+}
+.buddy-list li {
+  padding: 2px 4px 2px 20px;
+  cursor: pointer;
+  font-size: 11px;
+  position: relative;
+}
+.buddy-list li::before {
+  content: "🟡";
+  position: absolute;
+  left: 4px;
+  font-size: 10px;
+}
+.buddy-list li.dim {
+  color: var(--win-dark);
+  cursor: default;
+}
+.buddy-list li.dim::before { content: ""; }
+.buddy-list li:not(.dim):hover {
+  background: var(--aol-blue);
+  color: #fff;
+}
+.buddy-list li.selected {
+  background: var(--aol-blue);
+  color: #fff;
+}
+.buddy-actions {
+  display: flex;
+  gap: 4px;
+  margin-top: 6px;
+  padding: 4px;
+  border-top: 1px solid var(--win-dark);
+}
+
+/* Chat room */
+.chatroom {
+  min-height: 460px;
+  display: flex;
+  flex-direction: column;
+}
+.chat-body {
+  display: grid;
+  grid-template-columns: 1fr 150px;
+  gap: 8px;
+  padding: 6px;
+  flex: 1;
+  min-height: 380px;
+}
+.chat-main {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-height: 0;
+}
+.chat-log {
+  flex: 1;
+  background: #fff;
+  border-top: 1px solid var(--win-darker);
+  border-left: 1px solid var(--win-darker);
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  padding: 6px;
+  font-size: 12px;
+  overflow-y: auto;
+  min-height: 280px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+.chat-log .row { margin: 0 0 1px; }
+.chat-log .row .name {
+  font-weight: bold;
+  margin-right: 6px;
+}
+.chat-log .system {
+  color: var(--win-dark);
+  font-style: italic;
+}
+.chat-log .self .name { color: #006400; }
+
+.chat-form { display: flex; gap: 6px; }
+.chat-input { flex: 1; }
+
+.chat-people {
+  background: #fff;
+  border-top: 1px solid var(--win-darker);
+  border-left: 1px solid var(--win-darker);
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  padding: 4px;
+  font-size: 11px;
+  overflow-y: auto;
+  min-height: 280px;
+}
+.people-title {
+  font-weight: bold;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--win-dark);
+  padding-bottom: 2px;
+}
+.people-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.people-list li {
+  padding: 1px 2px;
+  cursor: pointer;
+}
+.people-list li:hover {
+  background: var(--aol-blue);
+  color: #fff;
+}
+.people-list li.me {
+  font-weight: bold;
+  color: #006400;
+}
+
+/* Room tabs */
+.room-tabs {
+  display: flex;
+  gap: 2px;
+  padding: 4px 6px;
+  background: var(--win-bg);
+  border-top: 1px solid var(--win-darker);
+  overflow-x: auto;
+}
+.room-tab {
+  font-family: inherit;
+  font-size: 11px;
+  background: var(--win-bg);
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid var(--win-darker);
+  border-bottom: 1px solid var(--win-darker);
+  padding: 2px 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.room-tab.active {
+  background: #fff;
+  font-weight: bold;
+  border-bottom: 1px solid #fff;
+}
+.room-tab .close-x {
+  margin-left: 6px;
+  font-weight: bold;
+  color: var(--win-darker);
+}
+.room-tab .close-x:hover { color: #a00; }
+
+/* Room finder */
+.room-finder {
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 380px;
+  z-index: 50;
+}
+.cat { margin-bottom: 10px; }
+.cat-title {
+  font-weight: bold;
+  margin-bottom: 6px;
+  padding: 2px 4px;
+  background: var(--aol-blue);
+  color: #fff;
+}
+.cat-rooms {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.room-btn {
+  font-family: inherit;
+  font-size: 12px;
+  background: var(--win-bg);
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid var(--win-darker);
+  border-bottom: 1px solid var(--win-darker);
+  padding: 4px 12px;
+  cursor: pointer;
+}
+.room-btn:hover { background: var(--aol-yellow-light); }
+.room-btn:active {
+  border-top: 1px solid var(--win-darker);
+  border-left: 1px solid var(--win-darker);
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+
+/* Mailbox */
+.mailbox {
+  position: fixed;
+  top: 110px;
+  right: 40px;
+  width: 360px;
+  z-index: 40;
+}
+.mail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.mail-list li {
+  padding: 6px;
+  border-bottom: 1px dashed var(--win-dark);
+  font-size: 12px;
+  cursor: pointer;
+}
+.mail-list li:hover { background: var(--aol-yellow-light); }
+.mail-list li:last-child { border-bottom: none; }
+
+/* DM window (AIM-style yellow) */
+.dm-win {
+  position: fixed;
+  width: 320px;
+  z-index: 60;
+  background: var(--win-bg);
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid var(--win-darker);
+  border-bottom: 2px solid var(--win-darker);
+  box-shadow: 2px 2px 0 0 #000;
+  display: flex;
+  flex-direction: column;
+}
+.dm-win .title-bar {
+  background: linear-gradient(90deg, #ffd700 0%, #ffff66 100%);
+  color: #000;
+}
+.dm-log {
+  background: #fff;
+  height: 200px;
+  overflow-y: auto;
+  padding: 6px;
+  font-size: 12px;
+  line-height: 1.4;
+  border-top: 1px solid var(--win-darker);
+  border-left: 1px solid var(--win-darker);
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  margin: 4px;
+}
+.dm-log .row { margin-bottom: 2px; word-wrap: break-word; }
+.dm-form { display: flex; gap: 4px; padding: 4px; }
+.dm-form .input { flex: 1; }

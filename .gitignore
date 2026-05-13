@@ -1,0 +1,13 @@
+node_modules/
+.wrangler/
+.dev.vars
+dist/
+*.log
+.DS_Store
+.vscode/
+
+# Sound assets — sourced separately, see README
+public/sounds/*.mp3
+public/sounds/*.wav
+public/sounds/*.ogg
+!public/sounds/README.md

@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>America Online</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="retro-cha — a chat that signs on like AOL 3.0 in 1998.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23ffff00'/%3E%3Ctext x='8' y='12' font-size='12' text-anchor='middle' font-family='monospace' fill='%23000'%3EA%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/styles/aol.css">
+  <link rel="stylesheet" href="/styles/chat.css">
+</head>
+<body class="desktop">
+  <!-- ============================================================ -->
+  <!-- Layer 1: Sign-on screen                                       -->
+  <!-- ============================================================ -->
+  <div id="signon-layer" class="layer">
+    <div class="win signon">
+      <div class="title-bar">
+        <div class="title">America Online</div>
+        <div class="title-btns">
+          <button class="tbtn" aria-label="Minimize" type="button">_</button>
+          <button class="tbtn" aria-label="Maximize" type="button">▢</button>
+          <button class="tbtn close" aria-label="Close" type="button">×</button>
+        </div>
+      </div>
+      <div class="win-body signon-body">
+        <div class="signon-left">
+          <div class="runner" aria-hidden="true"></div>
+          <div class="signon-version">
+            America Online&trade;<br>
+            Version 3.0<br>
+            <span class="brand">retro-cha</span>
+          </div>
+        </div>
+        <div class="signon-right">
+          <form id="signon-form" novalidate>
+            <label class="lbl" for="screen-name-saved">Select Screen Name:</label>
+            <select id="screen-name-saved" class="combo">
+              <option value="">&lt; New Screen Name &gt;</option>
+            </select>
+            <label class="lbl" for="screen-name">Enter Screen Name:</label>
+            <input id="screen-name" class="input" autocomplete="off" maxlength="24" placeholder="CoolDude1998" required>
+            <label class="lbl" for="password">Enter Password:</label>
+            <input id="password" class="input" type="password" value="********" maxlength="16">
+            <div class="signon-actions">
+              <button type="button" class="btn" id="setup">SETUP</button>
+              <button type="button" class="btn" id="help">HELP</button>
+              <button type="submit" class="btn primary" id="signon-btn">SIGN ON</button>
+            </div>
+            <div class="signon-status" id="status">Welcome. Pick a screen name to sign on.</div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="bottom-credit">retro-cha &middot; built like it's 1998</div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- Layer 2: Dial-up boot sequence                                -->
+  <!-- ============================================================ -->
+  <div id="boot-layer" class="layer hidden">
+    <div class="win modal">
+      <div class="title-bar"><div class="title" id="boot-title">Connect</div></div>
+      <div class="win-body boot-body">
+        <div class="phone" aria-hidden="true">📞</div>
+        <div id="boot-text">Click CONNECT to dial America Online.</div>
+        <div class="boot-progress" aria-hidden="true"><div id="boot-bar" class="boot-bar"></div></div>
+        <ul class="boot-checklist" id="boot-checklist">
+          <li data-step="dial">Dialing</li>
+          <li data-step="connect">Connecting</li>
+          <li data-step="verify">Verifying user name and password</li>
+          <li data-step="welcome">Welcome to America Online</li>
+        </ul>
+        <div class="boot-actions">
+          <button type="button" id="boot-connect" class="btn primary">CONNECT</button>
+          <button type="button" id="boot-cancel" class="btn">Cancel</button>
+        </div>
+        <div class="boot-tip">Tip: Be sure your phone line is free.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- Layer 3: Chat (AOL desktop)                                   -->
+  <!-- ============================================================ -->
+  <div id="chat-layer" class="layer hidden">
+    <header class="aol-toolbar">
+      <div class="aol-logo" aria-hidden="true">AOL</div>
+      <button class="tool" data-cmd="mail" type="button"><span class="mail-icon">📬</span> You have mail</button>
+      <button class="tool" data-cmd="chat" type="button">💬 Chat</button>
+      <button class="tool" data-cmd="rooms" type="button">👥 People Connection</button>
+      <button class="tool" data-cmd="buddies" type="button">🟡 Buddy List</button>
+      <button class="tool" data-cmd="signoff" type="button">Sign Off</button>
+      <div class="tray">
+        <span id="tray-name">—</span> &middot; <span id="tray-clock">12:00 PM</span>
+      </div>
+    </header>
+
+    <main class="aol-desktop" id="desktop">
+      <!-- Buddy List -->
+      <section class="win buddy" id="buddy-win">
+        <div class="title-bar">
+          <div class="title">Buddy List</div>
+          <div class="title-btns">
+            <button class="tbtn" id="buddy-min" aria-label="Minimize" type="button">_</button>
+          </div>
+        </div>
+        <div class="win-body buddy-body">
+          <div class="buddy-group">▼ Online (<span id="buddy-count">0</span>)</div>
+          <ul class="buddy-list" id="buddy-list">
+            <li class="dim">(your buddies will appear here)</li>
+          </ul>
+          <div class="buddy-actions">
+            <button class="btn small" id="buddy-im" type="button">Send IM</button>
+            <button class="btn small" id="buddy-locate" type="button">Locate</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Chat Room -->
+      <section class="win chatroom" id="chat-win">
+        <div class="title-bar">
+          <div class="title">People Connection &mdash; <span id="chat-title">Lobby</span></div>
+          <div class="title-btns">
+            <button class="tbtn" aria-label="Minimize" type="button">_</button>
+          </div>
+        </div>
+        <div class="win-body chat-body">
+          <div class="chat-main">
+            <div class="chat-log" id="chat-log" aria-live="polite"></div>
+            <form class="chat-form" id="chat-form" autocomplete="off">
+              <input id="chat-input" class="input chat-input" maxlength="500" placeholder="Type your message and press Enter…">
+              <button type="submit" class="btn primary">Send</button>
+            </form>
+          </div>
+          <aside class="chat-people">
+            <div class="people-title">People Here:</div>
+            <ul class="people-list" id="people-list"></ul>
+          </aside>
+        </div>
+        <div class="room-tabs" id="room-tabs"></div>
+      </section>
+
+      <!-- Room finder -->
+      <section class="win room-finder hidden" id="finder-win">
+        <div class="title-bar">
+          <div class="title">Find a Chat</div>
+          <div class="title-btns">
+            <button class="tbtn close" id="finder-close" aria-label="Close" type="button">×</button>
+          </div>
+        </div>
+        <div class="win-body">
+          <div class="cat">
+            <div class="cat-title">🏛 Town Square &mdash; Classic</div>
+            <div class="cat-rooms">
+              <button class="room-btn" data-room="lobby" type="button">The Lobby</button>
+              <button class="room-btn" data-room="music" type="button">Music</button>
+              <button class="room-btn" data-room="gaming" type="button">Gaming</button>
+              <button class="room-btn" data-room="coding" type="button">Coding</button>
+            </div>
+          </div>
+          <div class="cat">
+            <div class="cat-title">✨ The Modern Wing</div>
+            <div class="cat-rooms">
+              <button class="room-btn" data-room="memes" type="button">Memes</button>
+              <button class="room-btn" data-room="ai" type="button">A.I.</button>
+              <button class="room-btn" data-room="crypto" type="button">Crypto</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mailbox -->
+      <section class="win mailbox hidden" id="mail-win">
+        <div class="title-bar">
+          <div class="title">Online Mailbox</div>
+          <div class="title-btns">
+            <button class="tbtn close" id="mail-close" aria-label="Close" type="button">×</button>
+          </div>
+        </div>
+        <div class="win-body">
+          <ul class="mail-list">
+            <li><strong>Steve Case</strong> &mdash; Welcome to America Online!</li>
+            <li><strong>AOL Tips</strong> &mdash; Discover the People Connection</li>
+            <li><strong>The Bard</strong> &mdash; Try /me actions and double-click a buddy for IM</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="/scripts/sounds.js"></script>
+  <script type="module" src="/scripts/signon.js"></script>
+  <script type="module" src="/scripts/boot.js"></script>
+  <script type="module" src="/scripts/chat.js"></script>
+  <script type="module" src="/scripts/dm.js"></script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+:root {
+  --aol-blue: #00008b;
+  --aol-blue-light: #1e90ff;
+  --aol-yellow: #ffff00;
+  --aol-yellow-light: #fffacd;
+  --aol-gold: #ffd700;
+  --win-bg: #c0c0c0;
+  --win-dark: #808080;
+  --win-darker: #404040;
+  --win-text: #000;
+  --desktop-bg: #008080;
+  --link: #0000ee;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: "MS Sans Serif", "Tahoma", "Microsoft Sans Serif", "Geneva", sans-serif;
+  font-size: 12px;
+  color: var(--win-text);
+  background: var(--desktop-bg);
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  min-height: 100vh;
+}
+
+body.desktop { cursor: default; }
+
+.layer { min-height: 100vh; }
+.layer.hidden { display: none !important; }
+
+.hidden { display: none !important; }
+
+/* ============================================================ */
+/* Win95 windows                                                 */
+/* ============================================================ */
+.win {
+  background: var(--win-bg);
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid var(--win-darker);
+  border-bottom: 2px solid var(--win-darker);
+  box-shadow: 1px 1px 0 0 #000;
+  display: flex;
+  flex-direction: column;
+}
+
+.title-bar {
+  background: linear-gradient(90deg, #00008b 0%, #1e90ff 100%);
+  color: #fff;
+  font-weight: bold;
+  padding: 2px 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+  min-height: 18px;
+}
+
+.title-bar .title { flex: 1; }
+.title-btns { display: flex; gap: 2px; }
+
+.tbtn {
+  background: var(--win-bg);
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid var(--win-darker);
+  border-bottom: 1px solid var(--win-darker);
+  color: #000;
+  width: 18px;
+  height: 16px;
+  font-size: 10px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+}
+.tbtn:active {
+  border-top: 1px solid var(--win-darker);
+  border-left: 1px solid var(--win-darker);
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+.tbtn.close { font-weight: bold; }
+
+.win-body { padding: 8px; flex: 1; }
+
+/* ============================================================ */
+/* Buttons                                                       */
+/* ============================================================ */
+.btn {
+  font-family: inherit;
+  font-size: 12px;
+  background: var(--win-bg);
+  color: #000;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid var(--win-darker);
+  border-bottom: 2px solid var(--win-darker);
+  padding: 4px 16px;
+  cursor: pointer;
+  min-width: 75px;
+  font-weight: normal;
+}
+.btn:focus { outline: 1px dotted #000; outline-offset: -4px; }
+.btn:active, .btn.active {
+  border-top: 2px solid var(--win-darker);
+  border-left: 2px solid var(--win-darker);
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  padding: 5px 15px 3px 17px;
+}
+.btn[disabled] { color: var(--win-dark); text-shadow: 1px 1px 0 #fff; cursor: not-allowed; }
+.btn.primary { font-weight: bold; }
+.btn.small { padding: 2px 8px; min-width: 0; font-size: 11px; }
+
+/* ============================================================ */
+/* Inputs                                                        */
+/* ============================================================ */
+.input, .combo {
+  font-family: inherit;
+  font-size: 12px;
+  background: #fff;
+  color: #000;
+  border-top: 1px solid var(--win-darker);
+  border-left: 1px solid var(--win-darker);
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  padding: 2px 4px;
+  width: 100%;
+}
+.input:focus, .combo:focus { outline: 1px dotted #000; }
+.lbl { display: block; margin: 8px 0 2px; font-size: 11px; }
+
+/* ============================================================ */
+/* Sign-on                                                       */
+/* ============================================================ */
+.signon {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 460px;
+  max-width: calc(100vw - 16px);
+}
+.signon-body {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 12px;
+}
+.signon-left {
+  background: var(--aol-blue);
+  color: #fff;
+  padding: 10px 6px;
+  text-align: center;
+  border-top: 1px solid var(--win-darker);
+  border-left: 1px solid var(--win-darker);
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+.signon-version { margin-top: 12px; font-size: 10px; line-height: 1.4; }
+.signon-version .brand {
+  display: inline-block;
+  margin-top: 6px;
+  padding: 1px 4px;
+  background: var(--aol-yellow);
+  color: #000;
+  font-weight: bold;
+}
+.signon-right { padding-right: 8px; }
+.signon-actions { display: flex; gap: 6px; margin-top: 12px; justify-content: flex-end; }
+.signon-actions .btn { min-width: 70px; padding: 4px 10px; }
+.signon-status {
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--win-darker);
+  min-height: 14px;
+  border-top: 1px solid var(--win-dark);
+  padding-top: 6px;
+}
+.signon-status.error { color: #aa0000; }
+
+.bottom-credit {
+  position: fixed;
+  bottom: 6px;
+  right: 8px;
+  color: #ccffff;
+  font-size: 10px;
+  text-shadow: 1px 1px 0 #006666;
+  opacity: 0.8;
+}
+
+/* Running-man — pure CSS yellow stick figure */
+.runner {
+  width: 70px;
+  height: 84px;
+  margin: 4px auto 0;
+  position: relative;
+  animation: bob 0.45s steps(2) infinite alternate;
+}
+.runner::before, .runner::after {
+  content: "";
+  position: absolute;
+  background: var(--aol-yellow);
+  box-shadow: 0 0 0 1px #000;
+}
+.runner::before {
+  /* body block */
+  width: 22px; height: 28px;
+  left: 24px; top: 22px;
+  border-radius: 4px;
+}
+.runner::after {
+  /* head */
+  width: 18px; height: 18px;
+  left: 26px; top: 2px;
+  border-radius: 50%;
+}
+.runner .legs, .runner .arms { display: none; }
+@keyframes bob {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-3px); }
+}
+
+/* ============================================================ */
+/* Boot / dial-up                                                */
+/* ============================================================ */
+#boot-layer {
+  background: var(--desktop-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal { width: 380px; max-width: calc(100vw - 16px); }
+.boot-body {
+  display: grid;
+  gap: 12px;
+  text-align: center;
+  padding: 18px;
+}
+.phone {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto;
+  background: var(--aol-yellow);
+  border: 2px solid #000;
+  display: grid;
+  place-items: center;
+  font-size: 38px;
+  line-height: 1;
+}
+.phone.ringing { animation: shake 0.15s steps(2) infinite; }
+@keyframes shake {
+  0%   { transform: translateX(-2px) rotate(-3deg); }
+  100% { transform: translateX(2px)  rotate(3deg); }
+}
+.boot-progress {
+  width: 100%;
+  height: 14px;
+  background: #fff;
+  border-top: 1px solid var(--win-darker);
+  border-left: 1px solid var(--win-darker);
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+.boot-bar {
+  height: 100%;
+  width: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--aol-blue) 0,
+    var(--aol-blue) 6px,
+    #1e90ff 6px,
+    #1e90ff 8px
+  );
+  transition: width 0.3s linear;
+}
+.boot-checklist {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 8px;
+  text-align: left;
+  font-size: 11px;
+}
+.boot-checklist li {
+  padding: 1px 0 1px 18px;
+  color: var(--win-dark);
+  position: relative;
+}
+.boot-checklist li::before {
+  content: "○";
+  position: absolute;
+  left: 4px;
+  color: var(--win-dark);
+}
+.boot-checklist li.active { color: #000; }
+.boot-checklist li.active::before { content: "▶"; color: var(--aol-blue); }
+.boot-checklist li.done   { color: #000; }
+.boot-checklist li.done::before   { content: "✓"; color: #006400; }
+.boot-actions { display: flex; gap: 8px; justify-content: center; }
+.boot-tip { font-size: 10px; color: var(--win-dark); }
+
+/* ============================================================ */
+/* AOL toolbar / desktop                                         */
+/* ============================================================ */
+.aol-toolbar {
+  background: var(--win-bg);
+  border-bottom: 2px solid var(--win-darker);
+  padding: 4px 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+.aol-logo {
+  background: linear-gradient(180deg, var(--aol-blue) 0%, var(--aol-blue-light) 100%);
+  color: var(--aol-yellow);
+  font-weight: bold;
+  font-style: italic;
+  padding: 2px 8px;
+  font-size: 14px;
+  border: 1px solid #000;
+  letter-spacing: 1px;
+}
+.tool {
+  font-family: inherit;
+  font-size: 11px;
+  background: var(--win-bg);
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid var(--win-darker);
+  border-bottom: 1px solid var(--win-darker);
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.tool:hover { background: #d4d0c8; }
+.tool:active {
+  border-top: 1px solid var(--win-darker);
+  border-left: 1px solid var(--win-darker);
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
+.tool .mail-icon { display: inline-block; transform: translateY(1px); }
+.tool.has-mail { background: var(--aol-yellow); animation: mailblink 1.2s steps(2) infinite; }
+@keyframes mailblink {
+  0%, 100% { background: var(--aol-yellow); }
+  50%      { background: var(--win-bg); }
+}
+
+.tray {
+  margin-left: auto;
+  font-size: 11px;
+  padding: 2px 8px;
+  background: #fff;
+  border-top: 1px solid var(--win-darker);
+  border-left: 1px solid var(--win-darker);
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+}
