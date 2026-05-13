@@ -25,11 +25,14 @@ fetch() {
   fi
 }
 
-# These URLs change over time. If they 404, drop the file in by hand.
-fetch modem.mp3           "https://archive.org/download/DialupInternet/Dialup%20Internet.mp3"
-fetch welcome.mp3         "https://archive.org/download/AOLClassic/welcome.mp3"
-fetch youve-got-mail.mp3  "https://archive.org/download/AOLClassic/youve_got_mail.mp3"
-fetch buddy-in.mp3        "https://archive.org/download/AIMBuddySounds/buddyin.mp3"
+# Sources (verified May 2026):
+#   - 56k modem squeal: archive.org item "56kModem56kDialupModemSound"
+#   - Welcome / You've Got Mail / BuddyIn: archive.org item "im_20191103"
+# If any 404 in the future, hand-drop replacements into public/sounds/.
+fetch modem.mp3           "https://archive.org/download/56kModem56kDialupModemSound/Der%2056k%20Modem%20Klang%20-%20The%2056k%20dialup%20modem%20sound.mp3"
+fetch welcome.mp3         "https://archive.org/download/im_20191103/Welcome.mp3"
+fetch youve-got-mail.mp3  "https://archive.org/download/im_20191103/You%27ve%20Got%20Mail.mp3"
+fetch buddy-in.mp3        "https://archive.org/download/im_20191103/BuddyIn.mp3"
 
 echo
 echo "Done. Files in $DIR:"

@@ -11,10 +11,10 @@ Write-Host "(if any of these miss, drop the file in by hand — see public/sound
 Write-Host ""
 
 $files = @(
-  @{ name = "modem.mp3";           url = "https://archive.org/download/DialupInternet/Dialup%20Internet.mp3" },
-  @{ name = "welcome.mp3";         url = "https://archive.org/download/AOLClassic/welcome.mp3" },
-  @{ name = "youve-got-mail.mp3";  url = "https://archive.org/download/AOLClassic/youve_got_mail.mp3" },
-  @{ name = "buddy-in.mp3";        url = "https://archive.org/download/AIMBuddySounds/buddyin.mp3" }
+  @{ name = "modem.mp3";           url = "https://archive.org/download/56kModem56kDialupModemSound/Der%2056k%20Modem%20Klang%20-%20The%2056k%20dialup%20modem%20sound.mp3" },
+  @{ name = "welcome.mp3";         url = "https://archive.org/download/im_20191103/Welcome.mp3" },
+  @{ name = "youve-got-mail.mp3";  url = "https://archive.org/download/im_20191103/You%27ve%20Got%20Mail.mp3" },
+  @{ name = "buddy-in.mp3";        url = "https://archive.org/download/im_20191103/BuddyIn.mp3" }
 )
 
 foreach ($f in $files) {
