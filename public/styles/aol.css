@@ -31,6 +31,25 @@ body.desktop { cursor: default; }
 .layer { min-height: 100vh; }
 .layer.hidden { display: none !important; }
 
+#splash-layer {
+  position: fixed;
+  inset: 0;
+  background: #040910;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  opacity: 1;
+  transition: opacity 400ms ease-in-out;
+}
+#splash-layer.fade-out { opacity: 0; }
+#splash-logo {
+  width: min(92vw, 1100px);
+  height: auto;
+  aspect-ratio: 1600 / 480;
+  pointer-events: none;
+}
+
 .hidden { display: none !important; }
 
 /* ============================================================ */
@@ -317,14 +336,12 @@ body.desktop { cursor: default; }
   z-index: 30;
 }
 .aol-logo {
-  background: linear-gradient(180deg, var(--aol-blue) 0%, var(--aol-blue-light) 100%);
-  color: var(--aol-yellow);
-  font-weight: bold;
-  font-style: italic;
-  padding: 2px 8px;
-  font-size: 14px;
+  display: block;
+  height: 22px;
+  width: auto;
   border: 1px solid #000;
-  letter-spacing: 1px;
+  background: #040910;
+  image-rendering: auto;
 }
 .tool {
   font-family: inherit;
