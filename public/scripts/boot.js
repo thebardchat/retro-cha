@@ -66,8 +66,18 @@ connectBtn.addEventListener("click", async () => {
   await wait(350);
   await playAndWait("mail");
 
-  // Reveal chat. Bring in the toolbar's mail blink.
+  // Brand splash: hand off from the dial-up boot to the chat desktop with
+  // a brief full-screen reveal of the thebardchat lockup.
+  const splash = document.getElementById("splash-layer");
   document.getElementById("boot-layer").classList.add("hidden");
+  splash.classList.remove("hidden");
+  await wait(1500);
+  splash.classList.add("fade-out");
+  await wait(420);
+  splash.classList.add("hidden");
+  splash.classList.remove("fade-out");
+
+  // Reveal chat. Bring in the toolbar's mail blink.
   document.getElementById("chat-layer").classList.remove("hidden");
 
   // Add a transient "has-mail" class so the mailbox icon blinks until clicked.
