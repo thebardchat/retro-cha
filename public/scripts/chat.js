@@ -86,7 +86,7 @@ document.querySelectorAll('[data-cmd="buddies"]').forEach((b) => b.addEventListe
 }));
 
 document.querySelectorAll('[data-cmd="signoff"]').forEach((b) => b.addEventListener("click", () => {
-  if (!confirm("Sign off America Online?")) return;
+  if (!confirm("Sign off thebardchat?")) return;
   for (const r of state.rooms.values()) {
     try { r.ws.close(); } catch { /* ignore */ }
   }

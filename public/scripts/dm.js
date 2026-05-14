@@ -1,4 +1,4 @@
-// AIM-style direct-message pop-ups.
+// Direct-message pop-ups (yellow IM windows, draggable).
 
 const openDms = new Map(); // other (lowercase) -> { win, ws, log, form, input }
 

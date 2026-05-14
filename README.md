@@ -1,6 +1,6 @@
-# retro-cha
+# retro-cha — thebardchat
 
-A real-time chat that signs on like AOL 3.0 in 1998 — full dial-up modem handshake, "Welcome!" / "You've Got Mail!" voices, buddy-list chimes, AIM-style yellow DM pop-ups, and chat rooms ranging from the classic (Lobby, Music, Gaming, Coding) to the modern wing (Memes, AI, Crypto).
+A real-time chat that signs on like a 1998 dial-up service — full modem handshake, "Welcome!" / "You've Got Mail!"-style voices, buddy-list chimes, yellow IM pop-ups, and chat rooms ranging from the classic (Lobby, Music, Gaming, Coding) to the modern wing (Memes, AI, Crypto). Branded as **thebardchat**, the main chat for the bardchat ecosystem.
 
 Built on **Cloudflare Workers + Durable Objects** so any two browsers anywhere on the planet land in the same room with sub-second sync.
 
@@ -55,7 +55,7 @@ The first deploy runs the `v1` migration that creates the `Room` SQLite DO class
 | `public/scripts/signon.js` | Sign-on form, saved names |
 | `public/scripts/boot.js` | Dial-up sequence + welcome/mail audio |
 | `public/scripts/chat.js` | Room state, WS lifecycle, slash commands |
-| `public/scripts/dm.js` | AIM-style IM pop-up windows (draggable, multi-instance) |
+| `public/scripts/dm.js` | IM pop-up windows (draggable, multi-instance) |
 | `scripts/fetch-sounds.*` | Best-effort downloader for the four audio clips |
 
 ## How routing works
@@ -89,4 +89,4 @@ See [`public/sounds/README.md`](public/sounds/README.md). Place four MP3s in `pu
 
 ## License
 
-MIT for the code in this repo. The AOL/AIM trademarks and audio belong to their respective owners — this is a tribute, not for commercial use.
+MIT for the code in this repo. The look and sounds are a tribute to the 1998 dial-up era; any third-party audio used during local dev belongs to its respective owner and is not redistributed by this repo.

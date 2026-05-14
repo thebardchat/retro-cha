@@ -1,4 +1,4 @@
-// Preloader for the AOL classic audio. Falls back to silence if a file
+// Preloader for the dial-up era audio clips. Falls back to silence if a file
 // is missing or fails to decode, so the boot sequence still completes.
 
 const SOUND_FILES = {
